@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قاب و گلس موبایل</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filters-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .filter-select {
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            background: white;
+            min-width: 150px;
+        }
+        
+        .filter-select:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+        
+        .search-box {
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        
+        .bulk-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: #1e3c72;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2a5298;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #1e3c72;
+            border: 2px solid #1e3c72;
+        }
+        
+        .btn-outline:hover {
+            background: #1e3c72;
+            color: white;
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+        }
+        
+        .results-info {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .view-btn {
+            padding: 8px 12px;
+            border: 2px solid #1e3c72;
+            background: white;
+            color: #1e3c72;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .view-btn.active {
+            background: #1e3c72;
+            color: white;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .products-table {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #1e3c72;
+        }
+        
+        .product-card.selected {
+            border-color: #28a745;
+            background: rgba(40, 167, 69, 0.05);
+        }
+        
+        .product-image {
+            height: 180px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .phone-icon {
+            font-size: 4rem;
+            opacity: 0.3;
+            color: #666;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .badge-new { background: #28a745; }
+        .badge-sale { background: #dc3545; }
+        .badge-popular { background: #ffc107; color: #333; }
+        .badge-stock { background: #17a2b8; }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .product-model {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+        
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+        }
+        
+        .pricing-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .price-tier {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .price-qty {
+            color: #666;
+        }
+        
+        .price-amount {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .product-actions .btn {
+            flex: 1;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+        
+        .select-checkbox {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            z-index: 2;
+        }
+        
+        .table-view table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table-view th,
+        .table-view td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .table-view th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .table-view tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .quick-order-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            min-width: 300px;
+        }
+        
+        .quick-order-panel.active {
+            display: block;
+        }
+        
+        .selected-count {
+            font-weight: 600;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                width: 100%;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">📱 پارس موبایل</h1>
+            <p class="subtitle">پخش قاب و گلس موبایل | بهترین کیفیت، بهترین قیمت</p>
+            <div class="contact-info">
+                <div class="contact-item">📞 تلفن: 021-88776655</div>
+                <div class="contact-item">📱 موبایل: 0912-3456789</div>
+                <div class="contact-item">📍 آدرس: تهران، میدان امام خمینی، پاساژ علاءالدین</div>
+                <div class="contact-item">⏰ ساعت کار: 8:00 تا 20:00</div>
+            </div>
+        </header>
+        
+        <div class="filters-section">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label class="filter-label">برند موبایل</label>
+                    <select class="filter-select" id="brandFilter">
+                        <option value="">همه برندها</option>
+                        <option value="apple">آیفون (iPhone)</option>
+                        <option value="samsung">سامسونگ (Samsung)</option>
+                        <option value="xiaomi">شیائومی (Xiaomi)</option>
+                        <option value="huawei">هواوی (Huawei)</option>
+                        <option value="huawei">آنر (Honor)</option>
+                        <option value="oppo">اوپو (OPPO)</option>
+                        <option value="vivo">ویوو (Vivo)</option>
+                        <option value="realme">ریلمی (Realme)</option>
+                        <option value="honor">آنر (Honor)</option>
+                        <option value="nokia">نوکیا (Nokia)</option>
+                        <option value="lg">ال‌جی (LG)</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">نوع محصول</label>
+                    <select class="filter-select" id="typeFilter">
+                        <option value="">همه محصولات</option>
+                        <option value="case">قاب محافظ</option>
+                        <option value="glass">گلس محافظ</option>
+                        <option value="camera-glass">محافظ لنز دوربین</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">جنس/نوع</label>
+                    <select class="filter-select" id="materialFilter">
+                        <option value="">همه انواع</option>
+                        <option value="silicone">سیلیکون</option>
+                        <option value="tpu">TPU</option>
+                        <option value="hard-case">هارد کیس</option>
+                        <option value="leather">چرم</option>
+                        <option value="tempered">تمپرد گلس</option>
+                        <option value="hydrogel">هیدروژل</option>
+                        <option value="ceramic">سرامیک</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group search-box">
+                    <label class="filter-label">جستجو</label>
+                    <input type="text" class="search-input" id="searchInput" placeholder="نام مدل، کد محصول...">
+                </div>
+            </div>
+            
+            <!--
+            <div class="bulk-actions">
+                <button class="btn btn-primary" onclick="selectAll()">انتخاب همه</button>
+                <button class="btn btn-outline" onclick="clearSelection()">پاک کردن انتخاب</button>
+                <button class="btn btn-success" onclick="requestQuote()">درخواست قیمت کلی</button>
+                <button class="btn btn-primary" onclick="downloadCatalog()">دانلود کاتالوگ PDF</button>
+                <button class="btn btn-outline" onclick="openModal('contact')">تماس با ما</button>
+            </div>
+            !-->
+        </div>
+        
+        <div class="products-header">
+            <div class="results-info">
+                <span id="resultsCount">147</span> محصول یافت شد
+                <span id="selectedInfo"></span>
+            </div>
+            <div class="view-toggle">
+                <button class="view-btn active" onclick="switchView('grid')">🔲 کارتی</button>
+                <button class="view-btn" onclick="switchView('table')">📋 جدولی</button>
+            </div>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- نمونه محصولات -->
+            <div class="product-card" data-brand="apple" data-type="case" data-material="silicone">
+                <input type="checkbox" class="select-checkbox" onchange="updateSelection()">
+                <div class="product-image">
+                    <div class="phone-icon">📱</div>
+                    <div class="product-badge badge-new">جدید</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">قاب سیلیکونی آیفون ۱۴ پرو</h3>
+                    <div class="product-model">مدل: A2890 | کد: PC-IP14P-SIL-001</div>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span>جنس:</span>
+                            <span>سیلیکون نرم</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>رنگ:</span>
+                            <span>۶ رنگ</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>موجودی:</span>
+                            <span>۲۵۰ عدد</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>وزن:</span>
+                            <span>۳۵ گرم</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-tier">
+                            <span class="price-qty">۱-۱۰ عدد:</span>
+                            <span class="price-amount">۳۵,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">۱۱-۵۰ عدد:</span>
+                            <span class="price-amount">۳۲,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">+۵۱ عدد:</span>
+                            <span class="price-amount">۲۸,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn btn-primary" onclick="openModal('product', this)">جزئیات</button>
+                        <button class="btn btn-success">افزودن به سفارش</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-brand="samsung" data-type="glass" data-material="tempered">
+                <input type="checkbox" class="select-checkbox" onchange="updateSelection()">
+                <div class="product-image">
+                    <div class="phone-icon">📱</div>
+                    <div class="product-badge badge-popular">پرفروش</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">گلس تمپرد سامسونگ A54</h3>
+                    <div class="product-model">مدل: SM-A546 | کد: TG-SA54-FUL-002</div>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span>ضخامت:</span>
+                            <span>۰.۳۳ میلی‌متر</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>سختی:</span>
+                            <span>9H</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>موجودی:</span>
+                            <span>۴۸۰ عدد</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>پوشش:</span>
+                            <span>تمام صفحه</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-tier">
+                            <span class="price-qty">۱-۱۰ عدد:</span>
+                            <span class="price-amount">۱۸,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">۱۱-۵۰ عدد:</span>
+                            <span class="price-amount">۱۶,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">+۵۱ عدد:</span>
+                            <span class="price-amount">۱۴,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn btn-primary" onclick="openModal('product', this)">جزئیات</button>
+                        <button class="btn btn-success">افزودن به سفارش</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-brand="xiaomi" data-type="case" data-material="tpu">
+                <input type="checkbox" class="select-checkbox" onchange="updateSelection()">
+                <div class="product-image">
+                    <div class="phone-icon">📱</div>
+                    <div class="product-badge badge-sale">فروش ویژه</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">قاب ژله‌ای شیائومی Redmi Note 12</h3>
+                    <div class="product-model">مدل: RN12 | کد: GC-RN12-TPU-003</div>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span>جنس:</span>
+                            <span>TPU شفاف</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>ویژگی:</span>
+                            <span>ضد زردی</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>موجودی:</span>
+                            <span>۳۲۰ عدد</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>ضمانت:</span>
+                            <span>۶ ماه</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-tier">
+                            <span class="price-qty">۱-۱۰ عدد:</span>
+                            <span class="price-amount">۱۲,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">۱۱-۵۰ عدد:</span>
+                            <span class="price-amount">۱۰,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">+۵۱ عدد:</span>
+                            <span class="price-amount">۸,۵۰۰ تومان</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn btn-primary" onclick="openModal('product', this)">جزئیات</button>
+                        <button class="btn btn-success">افزودن به سفارش</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-brand="samsung" data-type="camera-glass" data-material="tempered">
+                <input type="checkbox" class="select-checkbox" onchange="updateSelection()">
+                <div class="product-image">
+                    <div class="phone-icon">📷</div>
+                    <div class="product-badge badge-stock">موجود</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">گلس لنز دوربین Galaxy S23 Ultra</h3>
+                    <div class="product-model">مدل: SM-S918 | کد: CG-GS23U-CAM-004</div>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span>تعداد لنز:</span>
+                            <span>۴ عدد</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>ضخامت:</span>
+                            <span>۰.۲ میلی‌متر</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>موجودی:</span>
+                            <span>۱۵۰ عدد</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>نصب:</span>
+                            <span>آسان</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-tier">
+                            <span class="price-qty">۱-۱۰ عدد:</span>
+                            <span class="price-amount">۲۵,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">۱۱-۵۰ عدد:</span>
+                            <span class="price-amount">۲۲,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">+۵۱ عدد:</span>
+                            <span class="price-amount">۱۹,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn btn-primary" onclick="openModal('product', this)">جزئیات</button>
+                        <button class="btn btn-success">افزودن به سفارش</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-brand="apple" data-type="glass" data-material="ceramic">
+                <input type="checkbox" class="select-checkbox" onchange="updateSelection()">
+                <div class="product-image">
+                    <div class="phone-icon">📱</div>
+                    <div class="product-badge badge-new">جدید</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">گلس سرامیک آیفون 15 پرو مکس</h3>
+                    <div class="product-model">مدل: A3108 | کد: CG-IP15PM-CER-005</div>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span>نوع:</span>
+                            <span>سرامیک نانو</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>کیفیت:</span>
+                            <span>پریمیوم</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>موجودی:</span>
+                            <span>۸۵ عدد</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>مقاومت:</span>
+                            <span>ضربه‌گیر</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-tier">
+                            <span class="price-qty">۱-۱۰ عدد:</span>
+                            <span class="price-amount">۴۵,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">۱۱-۵۰ عدد:</span>
+                            <span class="price-amount">۴۲,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">+۵۱ عدد:</span>
+                            <span class="price-amount">۳۸,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn btn-primary" onclick="openModal('product', this)">جزئیات</button>
+                        <button class="btn btn-success">افزودن به سفارش</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-brand="huawei" data-type="case" data-material="leather">
+                <input type="checkbox" class="select-checkbox" onchange="updateSelection()">
+                <div class="product-image" style="background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);">
+                    <div class="phone-icon" style="color: white;">📱</div>
+                    <div class="product-badge badge-popular">لاکچری</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">کیف چرمی هواوی P50 Pro</h3>
+                    <div class="product-model">مدل: ELS-NX9 | کد: LC-HP50P-LEA-006</div>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span>جنس:</span>
+                            <span>چرم طبیعی</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>رنگ:</span>
+                            <span>قهوه‌ای، مشکی</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>موجودی:</span>
+                            <span>۶۰ عدد</span>
+                        </div>
+                        <div class="spec-item">
+                            <span>ویژگی:</span>
+                            <span>جای کارت</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-tier">
+                            <span class="price-qty">۱-۱۰ عدد:</span>
+                            <span class="price-amount">۸۵,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">۱۱-۵۰ عدد:</span>
+                            <span class="price-amount">۷۸,۰۰۰ تومان</span>
+                        </div>
+                        <div class="price-tier">
+                            <span class="price-qty">+۵۱ عدد:</span>
+                            <span class="price-amount">۷۲,۰۰۰ تومان</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn btn-primary" onclick="openModal('product', this)">جزئیات</button>
+                        <button class="btn btn-success">افزودن به سفارش</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- نمای جدولی -->
+        <div class="products-table table-view" id="tableView">
+            <table>
+                <thead>
+                    <tr>
+                        <th>انتخاب</th>
+                        <th>تصویر</th>
+                        <th>نام محصول</th>
+                        <th>برند/مدل</th>
+                        <th>نوع</th>
+                        <th>موجودی</th>
+                        <th>قیمت واحد</th>
+                        <th>قیمت عمده</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" onchange="updateSelection()"></td>
+                        <td>📱</td>
+                        <td>قاب سیلیکونی آیفون ۱۴ پرو</td>
+                        <td>Apple / A2890</td>
+                        <td>قاب سیلیکون</td>
+                        <td>۲۵۰ عدد</td>
+                        <td>۳۵,۰۰۰ ت</td>
+                        <td>۲۸,۰۰۰ ت</td>
+                        <td>
+                            <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8rem;">جزئیات</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" onchange="updateSelection()"></td>
+                        <td>📱</td>
+                        <td>گلس تمپرد سامسونگ A54</td>
+                        <td>Samsung / SM-A546</td>
+                        <td>گلس تمپرد</td>
+                        <td>۴۸۰ عدد</td>
+                        <td>۱۸,۰۰۰ ت</td>
+                        <td>۱۴,۰۰۰ ت</td>
+                        <td>
+                            <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8rem;">جزئیات</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" onchange="updateSelection()"></td>
+                        <td>📱</td>
+                        <td>قاب ژله‌ای شیائومی Redmi Note 12</td>
+                        <td>Xiaomi / RN12</td>
+                        <td>قاب TPU</td>
+                        <td>۳۲۰ عدد</td>
+                        <td>۱۲,۰۰۰ ت</td>
+                        <td>۸,۵۰۰ ت</td>
+                        <td>
+                            <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8rem;">جزئیات</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- پنل سفارش سریع -->
+    <div class="quick-order-panel" id="quickOrderPanel">
+        <div class="selected-count">
+            <span id="selectedCount">0</span> محصول انتخاب شده
+        </div>
+        <div style="margin-bottom: 15px;">
+            <button class="btn btn-success" onclick="bulkOrder()" style="width: 100%; margin-bottom: 10px;">
+                درخواست قیمت کلی
+            </button>
+            <button class="btn btn-outline" onclick="clearSelection()" style="width: 100%;">
+                پاک کردن انتخاب
+            </button>
+        </div>
+    </div>
+    
+    <!-- مودال جزئیات محصول -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 id="modalTitle">جزئیات محصول</h2>
+            <div id="modalContent">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                    <div>
+                        <h4>مشخصات فنی:</h4>
+                        <ul>
+                            <li>جنس: سیلیکون مرغوب</li>
+                            <li>وزن: ۳۵ گرم</li>
+                            <li>ابعاد: ۱۶۰×۷۸×۱۲ میلی‌متر</li>
+                            <li>رنگ‌های موجود: ۶ رنگ</li>
+                            <li>مقاومت: ضربه‌گیر</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>قیمت‌گذاری:</h4>
+                        <ul>
+                            <li>۱-۱۰ عدد: ۳۵,۰۰۰ تومان</li>
+                            <li>۱۱-۵۰ عدد: ۳۲,۰۰۰ تومان</li>
+                            <li>+۵۱ عدد: ۲۸,۰۰۰ تومان</li>
+                            <li>+۱۰۰ عدد: ۲۵,۰۰۰ تومان</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="margin: 20px 0;">
+                    <h4>شرایط فروش:</h4>
+                    <p>✅ حداقل سفارش: ۱۰ عدد</p>
+                    <p>✅ ضمانت کیفیت: ۶ ماه</p>
+                    <p>✅ تحویل: ۲۴ ساعته در تهران</p>
+                    <p>✅ پرداخت: نقد، چک، واریز</p>
+                </div>
+            </div>
+            <div class="product-actions" style="margin-top: 30px;">
+                <button class="btn btn-success">درخواست قیمت ویژه</button>
+                <button class="btn btn-primary">تماس مستقیم</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- مودال تماس با ما -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>اطلاعات تماس</h2>
+            <div style="margin: 30px 0;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📞 تلفن‌های تماس:</h4>
+                        <p>دفتر مرکزی: 021-88776655</p>
+                        <p>فروش: 021-88776656</p>
+                        <p>پشتیبانی: 021-88776657</p>
+                    </div>
+                    <div>
+                        <h4>📱 موبایل:</h4>
+                        <p>مدیر فروش: 0912-3456789</p>
+                        <p>واتساپ: 0912-3456789</p>
+                        <p>تلگرام: @ParsMobile_Wholesale</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4>📍 آدرس:</h4>
+                    <p>تهران، میدان امام خمینی، پاساژ علاءالدین، طبقه ۲، واحد ۱۲۵</p>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4>⏰ ساعات کاری:</h4>
+                    <p>شنبه تا پنج‌شنبه: ۸:۰۰ تا ۲۰:۰۰</p>
+                    <p>جمعه: ۱۰:۰۰ تا ۱۸:۰۰</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let selectedProducts = [];
+        
+        // فیلتر محصولات
+        function filterProducts() {
+            const brand = document.getElementById('brandFilter').value;
+            const type = document.getElementById('typeFilter').value;
+            const material = document.getElementById('materialFilter').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            
+            const products = document.querySelectorAll('.product-card');
+            let visibleCount = 0;
+            
+            products.forEach(product => {
+                const productBrand = product.dataset.brand;
+                const productType = product.dataset.type;
+                const productMaterial = product.dataset.material;
+                const productText = product.textContent.toLowerCase();
+                
+                const matchBrand = !brand || productBrand === brand;
+                const matchType = !type || productType === type;
+                const matchMaterial = !material || productMaterial === material;
+                const matchSearch = !search || productText.includes(search);
+                
+                if (matchBrand && matchType && matchMaterial && matchSearch) {
+                    product.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('resultsCount').textContent = visibleCount;
+        }
+        
+        // تغییر نمای نمایش
+        function switchView(view) {
+            const gridView = document.getElementById('productsGrid');
+            const tableView = document.getElementById('tableView');
+            const buttons = document.querySelectorAll('.
+                    
+                
